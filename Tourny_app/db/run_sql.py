@@ -18,3 +18,4 @@ def run_sql(sql, values = None):
         if conn is not None:
             conn.close()
     return results
+    
