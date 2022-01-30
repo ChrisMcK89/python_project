@@ -1,6 +1,7 @@
 from db.run_sql import run_sql
 from models.match import Match
 from models.player import Player
+import repositories.player_repository as player_repository
 
 def create_match(match):
     sql = "INSERT INTO matches (player1_id, player2_id) VALUES (%s, %s) RETURNING *"
@@ -48,4 +49,8 @@ def play_match(result, id):
         sql = "UPDATE matches SET result = 'Player 2 Wins!' WHERE id = %s"
         values = [id]
         run_sql(sql, values)
+
+def get_player_details(player_id):
+    player_details = player_repository.select(player_id)
+    return player_details
 

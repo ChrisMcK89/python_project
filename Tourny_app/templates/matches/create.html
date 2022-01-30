@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %} 
+    <form action="/matches" method="post">
+        <div>
+            <label for="player_1">Player 1</label>
+            <select id="player_1" name="player_1">
+                {% for player in all_players %} 
+                    <option value="{{player.id}}">{{player.name}}</option>
+                {% endfor %} 
+            </select>  
+        </div>  
+        <div>
+            <label for="player_2">Player 2</label>
+            <select id="player_2" name="player_2">
+                {% for player in all_players %} 
+                    <option value="{{player.id}}">{{player.name}}</option>
+                {% endfor %} 
+            </select>  
+        </div>             
+            <button type="submit">Start Match!</button>
+        
+    </form>
+{% endblock %}
