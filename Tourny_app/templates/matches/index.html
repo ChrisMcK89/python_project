@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Matches</h1>
+
+<table>
+  <tr>
+    <th>Match</th>
+  
+  </tr>
+  {% for match in matches %}
+  <tr>
+    <td>Match id:{{match.id}}  Player 1 id:{{match.player1_id}}  Player 2 id:{{match.player2_id}}  Result: {{match.result}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

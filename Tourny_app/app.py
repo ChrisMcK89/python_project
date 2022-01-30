@@ -1,13 +1,13 @@
 from flask import Flask, render_template
 
-# from controllers.player_controller import player_blueprint
-# from controllers.match_controller import match_blueprint
+from controllers.player_controller import players_blueprint
+from controllers.match_controller import matches_blueprint
 
 
 app = Flask(__name__)
 
-# app.register_blueprint(player_blueprint)
-# app.register_blueprint(match_blueprint)
+app.register_blueprint(players_blueprint)
+app.register_blueprint(matches_blueprint)
 
 
 @app.route('/')

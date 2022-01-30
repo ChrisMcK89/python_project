@@ -35,7 +35,17 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        match = Match(row['player1_id'], row['player2_id'], row['id'])
+        match = Match(row['player1_id'], row['player2_id'], row['id'], row['result'])
         matches.append(match)
     return matches
+
+def play_match(result, id):
+    if result == 1:
+        sql = "UPDATE matches SET result = 'Player 1 Wins!' WHERE id = %s"
+        values = [id]
+        run_sql(sql, values)
+    elif result == 2:
+        sql = "UPDATE matches SET result = 'Player 2 Wins!' WHERE id = %s"
+        values = [id]
+        run_sql(sql, values)
 

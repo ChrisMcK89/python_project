@@ -22,6 +22,7 @@ match_repository.create_match(match2)
 # match_repository.delete_all()
 # player_repository.delete(36)
 
-print(match_repository.select(7))
+# print(match_repository.select(7))
 
 
+match_repository.play_match(2, 2)

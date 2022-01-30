@@ -11,5 +11,5 @@ CREATE TABLE matches (
   id SERIAL PRIMARY KEY,
   player1_id INT REFERENCES players(id),
   player2_id INT REFERENCES players(id),
-  result INT
+  result VARCHAR(255)
 );
