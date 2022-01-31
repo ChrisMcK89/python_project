@@ -1,0 +1,25 @@
+body {
+    color:whitesmoke;
+}
+
+.grid-container {
+   display: grid;
+   grid-template-columns: 33% 33% 33%;
+   grid-template-rows: 33% 33% 33%;
+   /* grid-gap: 10px; */
+   background-color: #0f0e0e;
+   /* padding: 10px; */
+}
+
+.grid-container > div {
+    font-size: 20px;
+    background-color: #813c8d;
+    text-align: center;
+    padding: 30px 25px;
+  }
+
+/* .grid-item1 {
+  grid-column-start: 1;
+  grid-column-end: 1;
+} */
+  
