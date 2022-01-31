@@ -11,7 +11,17 @@ matches_blueprint = Blueprint("matches", __name__)
 @matches_blueprint.route("/matches")
 def matches():
     matches = match_repository.select_all()
-    return render_template("matches/index.html", matches = matches)
+
+    matches_and_players = []
+    for match in matches:
+        new_dict = {}
+        new_dict['match'] = match
+        new_dict['player1'] = player_repository.select(match.player1_id)
+        new_dict['player2'] = player_repository.select(match.player2_id)
+        matches_and_players.append(new_dict)
+    
+
+    return render_template("matches/index.html", matches_and_players = matches_and_players)
 
 @matches_blueprint.route("/matches/create", methods=['GET'])
 def new_match():
@@ -28,5 +38,23 @@ def post_create_match():
 
 @matches_blueprint.route("/matches/<id>")
 def show(id):
-    match = match_repository.select(id)
-    return render_template("matches/show.html", match = match)
+    matches = match_repository.select(id)
+    
+    new_dict = {}
+    new_dict['match'] = matches
+    new_dict['player1'] = player_repository.select(matches.player1_id)
+    new_dict['player2'] = player_repository.select(matches.player2_id)
+    
+
+    return render_template("matches/show.html", match = new_dict)
+
+@matches_blueprint.route("/matches/<id>/p1w")
+def result(id):
+    match_repository.play_match(id, 1)
+    return redirect("/matches")
+    
+
+@matches_blueprint.route("/matches/<id>/p2w")
+def results(id):
+    match_repository.play_match(id, 2)
+    return redirect("/matches")

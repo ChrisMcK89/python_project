@@ -26,7 +26,7 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        match = Match(result['player1_id'], result['player2_id'], result['id'])
+        match = Match(result['player1_id'], result['player2_id'], result['id'], result['result'])
     return match
 
 def select_all():
@@ -40,17 +40,23 @@ def select_all():
         matches.append(match)
     return matches
 
-def play_match(result, id):
+def play_match(id, result):
+    match = select(id)
+    player1 = match.player1_id
+    player2 = match.player2_id
     if result == 1:
-        sql = "UPDATE matches SET result = 'Player 1 Wins!' WHERE id = %s"
-        values = [id]
+        sql = "UPDATE matches SET result = %s WHERE id = %s"
+        values = [player1, id]
         run_sql(sql, values)
     elif result == 2:
-        sql = "UPDATE matches SET result = 'Player 2 Wins!' WHERE id = %s"
-        values = [id]
+        sql = "UPDATE matches SET result = %s WHERE id = %s"
+        values = [player2, id]
         run_sql(sql, values)
 
-def get_player_details(player_id):
-    player_details = player_repository.select(player_id)
-    return player_details
+# def get_player_details_1(id):
+#     get_match = select(id)
+#     get_player = player_repository.select_all()
+#     if get_match.player1_id == get_player.id:
+#         return get_player.name
+
 

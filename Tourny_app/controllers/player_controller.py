@@ -28,3 +28,15 @@ def create_player():
     player_repository.save(player)
     return redirect("/players")
     
+@players_blueprint.route("/players/<id>/edit", methods=['GET'])
+def edit_player(id):
+    player = player_repository.select(id)
+    return render_template("players/edit.html", player = player)
+
+@players_blueprint.route("/players/<id>", methods=['POST'])
+def edited_player(id):
+    name = request.form['name']
+    character = request.form['character']
+    player = Player(name, character, id)
+    player_repository.update(player)
+    return redirect("/players")

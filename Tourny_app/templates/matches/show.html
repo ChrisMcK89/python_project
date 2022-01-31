@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1> {{match.id}} </h1>
+<h1> {{match['match'].id}} </h1>
 
-<h3>Player 1: {{match.player1_id}}</h3> 
-<h3>Player 2: {{match.player2_id}}</h3>
-<h3>Result: {{match.result}}</h3>
-<h3><button name="win1" value="1">Win</button></h3>
-<h3><button name="win2" value="2">Win</button></h3>
+<h3>Player 1: {{match['player1'].name}}</h3> 
+<h3>Player 2: {{match['player2'].name}}</h3>
+<h3>Result: {{match['match'].result}}</h3>
+<h3><a href="http://localhost:5000/matches/{{match['match'].id}}/p1w">Player 1 wins</a></h3>
+<h3><a href="http://localhost:5000/matches/{{match['match'].id}}/p2w">Player 2 wins</a></h3>
 {% endblock %}

@@ -8,9 +8,12 @@
     <th>Match</th>
   
   </tr>
-  {% for match in matches %}
+  {% for match in matches_and_players %}
   <tr>
-    <td>Match id:{{match.id}} Player 1:{{match.player1_id}}  Player 2:{{match.player2_id}}  Result: {{match.result}}</td>
+    <td>Match : {{match['match'].id}}</td>
+    <td>Player 1: {{match['player1'].name}}</td>
+    <td>Player 2: {{match['player2'].name}}</td>
+    <td>Winner : {{match['match'].result}}</td>
   </tr>
   {% endfor %}
 </table>
