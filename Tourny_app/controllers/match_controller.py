@@ -4,6 +4,7 @@ from models.match import Match
 from models.player import Player
 import repositories.match_repostitory as match_repository
 import repositories.player_repository as player_repository
+import pdb
 
 
 matches_blueprint = Blueprint("matches", __name__)
@@ -39,14 +40,22 @@ def post_create_match():
 @matches_blueprint.route("/matches/<id>")
 def show(id):
     matches = match_repository.select(id)
-    
+
     new_dict = {}
     new_dict['match'] = matches
     new_dict['player1'] = player_repository.select(matches.player1_id)
     new_dict['player2'] = player_repository.select(matches.player2_id)
-    
 
-    return render_template("matches/show.html", match = new_dict)
+    winner_name = ""
+
+    if int(new_dict['match'].result) == new_dict['player1'].id:
+            winner = (new_dict['player1'].name)
+            winner_name = winner
+    elif int(new_dict['match'].result) == new_dict['player2'].id:
+            winner = (new_dict['player2'].name)
+            winner_name = winner
+
+    return render_template("matches/show.html", match = new_dict, winner = winner_name)
 
 @matches_blueprint.route("/matches/<id>/p1w")
 def result(id):

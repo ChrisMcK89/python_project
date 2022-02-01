@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %} 
-    <form action="/players/{{player.id}}/edit" method="post">
+    <form action="/players/{{player.id}}" method="post">
         <h3>{{player.id}}</h3>
         <div>
             <label for="name">Name:</label>
