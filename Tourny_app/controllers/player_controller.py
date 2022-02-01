@@ -40,3 +40,8 @@ def edited_player(id):
     player = Player(name, character, id)
     player_repository.update(player)
     return redirect("/players")
+
+@players_blueprint.route("/players/<id>/delete")
+def delete_player(id):
+    player_repository.delete(id)
+    return redirect("/players")

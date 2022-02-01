@@ -3,19 +3,24 @@
 {% block content %}
 <h1>Matches</h1>
 
-<table>
+<table class="matches_table">
+  <thead>
   <tr>
-    <th>Match</th>
-  
+    <th>Match</th><th>Player 1</th><th>Player 2</th><th>Winner</th>
   </tr>
+  </thead>
   {% for match in matches_and_players %}
+  <tbody>
   <tr>
-    <td>Match : {{match['match'].id}}</td>
-    <td>Player 1: {{match['player1'].name}}</td>
-    <td>Player 2: {{match['player2'].name}}</td>
-    <td>Winner : {{match['result']}}</td>
-    <td></td>
+    <td>{{match['match'].id}}</td>
+    <td>{{match['player1'].name}}</td>
+    <td>{{match['player2'].name}}</td>
+    <td>{{match['result']}}</td>
+    <td><a href="matches/{{match['match'].id}}">Play</a><td><a href="matches/{{match['match'].id}}/delete">Remove</a></td>
   </tr>
+ </tbody>
   {% endfor %}
 </table>
 {% endblock %}
+
+

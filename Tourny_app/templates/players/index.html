@@ -4,15 +4,17 @@
 <h1>Players</h1>
 
 <table>
+  <thead>
   <tr>
-    <th>player</th><th>character</th>
-  <tr></tr>
-  <tr></tr>
+    <th>Player</th><th>Character</th>
   </tr>
+  </thead>
   {% for player in players %}
+  <tbody>
   <tr>
-    <td>{{player.name}}</td><td>{{player.character}}</td>
+    <td>{{player.name}}</td><td>{{player.character}}</td><td><a href="players/{{player.id}}">View</a><td><a href="players/{{player.id}}/edit">Edit</a><td><a href="players/{{player.id}}/delete">Remove</a></td>
   </tr>
+ </tbody>
   {% endfor %}
 </table>
 {% endblock %}

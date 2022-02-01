@@ -1,11 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1> {{match['match'].id}} </h1>
+<h1> Match: {{match['match'].id}} </h1>
 
-<h3>Player 1: {{match['player1'].name}}</h3> 
-<h3>Player 2: {{match['player2'].name}}</h3>
-<h3>Result: {{winner}}</h3>
-<h3><a href="http://localhost:5000/matches/{{match['match'].id}}/p1w">Player 1 wins</a></h3>
-<h3><a href="http://localhost:5000/matches/{{match['match'].id}}/p2w">Player 2 wins</a></h3>
+<table>
+    <thead>
+        <th>Player 1</th>
+        <th>Player 2</th>
+        <th>Winner</th>
+    </thead>
+    <tbody>
+        <tr>
+        <td>{{match['player1'].name}}</td>
+        <td>{{match['player2'].name}}</td>
+        <td>{{winner}}</td>
+        </tr>
+        <tr>
+            <td><a href="/matches/{{match['match'].id}}/p1w">Win</a></td>
+            <td><a href="/matches/{{match['match'].id}}/p2w">Win</a></td>
+        </tr>
+    </tbody>
+</table>
+
+
 {% endblock %}

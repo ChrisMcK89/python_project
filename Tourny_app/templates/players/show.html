@@ -3,7 +3,15 @@
 {% block content %}
 <h1> {{player.name}} </h1>
 
-<h3>Character: {{player.character}}</h3> 
+<table class="player_table">
+    <thead>
+<th>Character:</th> 
+<th>{{player.character}}</th>   
+<th><a href="players/{{player.id}}/edit">Edit</a></th>
+<th><a href="players/{{player.id}}/delete">Delete</a></th>
+
+</thead>
+</table>
 
 
 {% endblock %}

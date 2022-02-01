@@ -60,24 +60,58 @@ main {
     color: #171717;
 }
 
+table {
+    text-align: left;
+    width: 60%;
+    line-height: 1.5;
+}
+
+table thead {
+    font-size: 1.5em;
+    height: 50px;
+}
+
+table a {
+    font-style: italic;
+}
+
+.matches_table {
+    width: 100%
+}
+
+.player_table {
+    width: 75%
+}
 
 .main_index {
-    font-size: 2em;
-    line-height: 2;
+    font-style: None;
+    font-size: 3em;
+    line-height: 1.6;
+    font-weight: normal;
 }
 
 main a {
     text-decoration: none;
-    color: #171717
+    color: #DA0037;
+    font-style: None;
+    font-weight: lighter;
+}
+
+.link_box {
+    background-color: #DA0037;
+    padding-right: 150px;
 }
 
 main a:visited{
-    color: #171717;
+    color: #DA0037;
 }
 
 main h1 {
     margin-top: 0px;
     margin-left: 0;
+    font-size: 3em;
+    font-style: italic;
+    font-weight: normal;
 }
 
 

@@ -83,3 +83,9 @@ def result(id):
 def results(id):
     match_repository.play_match(id, 2)
     return redirect("/matches")
+
+@matches_blueprint.route("/matches/<id>/delete")
+def delete_match(id):
+    match_repository.delete(id)
+    return redirect("/matches")
+
