@@ -1,10 +1,12 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<div>
-    <a href="http://localhost:5000/players/newplayer">Add Player</a>
-</div>
-<div>
-    <a href="http://localhost:5000/matches/create">Create Match</a>
-</div>
+    <div class="main_index">
+        <a href="http://localhost:5000/players/newplayer">Add Player</a><br>
+        <a href="http://localhost:5000/matches/create">Create Match</a><br>
+        <a href="http://localhost:5000/matches">Play/View Matches</a><br>
+        <a href="http://localhost:5000/players">Edit Player</a>
+    </div>
+
 {% endblock %}
+

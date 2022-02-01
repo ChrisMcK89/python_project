@@ -5,12 +5,13 @@
 
 <table>
   <tr>
-    <th>player</th>
-  
+    <th>player</th><th>character</th>
+  <tr></tr>
+  <tr></tr>
   </tr>
   {% for player in players %}
   <tr>
-    <td>{{player.name}}  {{player.character}}</td>
+    <td>{{player.name}}</td><td>{{player.character}}</td>
   </tr>
   {% endfor %}
 </table>

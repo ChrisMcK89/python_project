@@ -19,15 +19,24 @@ def matches():
         new_dict['match'] = match
         new_dict['player1'] = player_repository.select(match.player1_id)
         new_dict['player2'] = player_repository.select(match.player2_id)
+        if new_dict['match'].result == None:
+            new_dict['result'] = "Match not completed"
+        elif int(new_dict['match'].result) == new_dict['player1'].id:
+            new_dict['result'] = (new_dict['player1'].name)
+        elif int(new_dict['match'].result) == new_dict['player2'].id:
+            new_dict['result'] = (new_dict['player2'].name)
         matches_and_players.append(new_dict)
     
-
     return render_template("matches/index.html", matches_and_players = matches_and_players)
+
+
 
 @matches_blueprint.route("/matches/create", methods=['GET'])
 def new_match():
     players = player_repository.select_all()
     return render_template("matches/create.html", all_players = players)
+
+
 
 @matches_blueprint.route("/matches", methods=['POST'])
 def post_create_match():
@@ -36,6 +45,8 @@ def post_create_match():
     match = Match(player_1, player_2)
     match_repository.create_match(match)
     return redirect("/matches")
+
+
 
 @matches_blueprint.route("/matches/<id>")
 def show(id):
@@ -48,7 +59,10 @@ def show(id):
 
     winner_name = ""
 
-    if int(new_dict['match'].result) == new_dict['player1'].id:
+    if new_dict['match'].result == None:
+            winner = "Match not completed"
+            winner_name = winner
+    elif int(new_dict['match'].result) == new_dict['player1'].id:
             winner = (new_dict['player1'].name)
             winner_name = winner
     elif int(new_dict['match'].result) == new_dict['player2'].id:
@@ -56,6 +70,8 @@ def show(id):
             winner_name = winner
 
     return render_template("matches/show.html", match = new_dict, winner = winner_name)
+
+    
 
 @matches_blueprint.route("/matches/<id>/p1w")
 def result(id):
