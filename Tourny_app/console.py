@@ -29,4 +29,5 @@ import repositories.match_repostitory as match_repository
 # match_repository.delete_all()
 # player_repository.delete_all()
 
-match_repository.play_match(2, 19)
+match_repository.delete_all()
+player_repository.delete_all()
